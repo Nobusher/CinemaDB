@@ -15,7 +15,7 @@ namespace CinemaDB
         public DbSet<Hall> Halls { get; set; }
         public DbSet<Film> Films { get; set; }
         public DbSet<Session> Sessions { get; set; }
-
+        public DbSet<CinemaView> CinemaViews { get; set; }
         protected override void OnConfiguring
             (DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=cinema;Username=postgres; Password=0000");

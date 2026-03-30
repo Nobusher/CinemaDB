@@ -30,8 +30,10 @@ namespace CinemaDB.Models
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
         public List<Session> Sessions { get; set;}
-    }
+        public bool IsVisible { get; set; } = true;//NEW
 
+    }
+    
     internal class Session 
     {
         public int Id { get; set; }
@@ -41,7 +43,7 @@ namespace CinemaDB.Models
         public Film Film { get; set; }
         public int HallId { get; set; }
         public Hall Hall { get; set; }
-
+        public bool IsVisible { get; set; } = true;//NEW
     }
     internal class Hall 
     {
