@@ -7,9 +7,10 @@ namespace CinemaDB
         static void Main(string[] args)
         {
             using var db = new CinemaContext();
+            
             //Индексы могут не совпадать,проверяйте вручную в psql,
             //либо указывайте через ссылку на экземпляр
-            var action = AddGenre("Action");
+            /*var action = AddGenre("Action");
             var scifi = AddGenre("SciFi");
             var drama = AddGenre("Drama");
 
@@ -83,7 +84,10 @@ namespace CinemaDB
                 Hall = hall,
                 Price = price,
                 IsVisible = isvisible
-            };
+            };*/
         }
+
+
+        
     }
 }

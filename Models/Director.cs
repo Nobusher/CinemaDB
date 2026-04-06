@@ -43,7 +43,8 @@ namespace CinemaDB.Models
         public Film Film { get; set; }
         public int HallId { get; set; }
         public Hall Hall { get; set; }
-        public bool IsVisible { get; set; } = true;//NEW
+        public bool IsVisible { get; set; } = true;
+        public List<Ticket> Tickets { get; set; } //NEW
     }
     internal class Hall 
     {
@@ -52,4 +53,15 @@ namespace CinemaDB.Models
         public int Seats { get; set; }
         public List<Session> Sessions { get; set; }
     }
+    internal class Ticket 
+    {
+        public int Id { get; set; }
+        public int SeatNumber { get; set; }
+        public string CustomerName { get; set; }
+        public DateTime PurchasedAt { get; set; }
+
+        public int SessionId { get; set; }
+        public Session Session { get; set; }
+    }
+
 }
