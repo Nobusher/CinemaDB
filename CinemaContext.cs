@@ -10,13 +10,16 @@ namespace CinemaDB
 {
     internal class CinemaContext : DbContext
     {
-        private string _connection;
-        private string _password;
+        private readonly string _connectionString;
 
-        public CinemaContext(string connection, string password)
+        public CinemaContext(string connectionString)
         {
-            _connection = connection;
-            _password = password;
+            _connectionString = connectionString;
+        }
+
+        public CinemaContext(string username, string password, string connection)
+        {
+            _connectionString = $"Host={connection};Port=5432;Database=cinema;Username={username};Password={password}";
         }
 
         public DbSet<Director> Directors { get; set; }
@@ -25,9 +28,8 @@ namespace CinemaDB
         public DbSet<Film> Films { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<CinemaView> CinemaViews { get; set; }
-        protected override void OnConfiguring
-            (DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql($"Host={_connection};Port=5432;Database=cinema;Username=postgres; Password={_password}");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseNpgsql(_connectionString);
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Director>()
